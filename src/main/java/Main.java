@@ -1,17 +1,42 @@
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
 
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        List<Patient> Patients = new ArrayList<Patient>();
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+        URL imagePat1 = null;
+        URL imagePat2 = null;
+        URL imageMri1 = null;
+        URL imageMri2 = null;
+        MRI mriPat1 = new MRI(imageMri1,2, LocalDate.of(2023,9,14));
+        MRI mriPat2 = new MRI(imageMri2,4, LocalDate.of(2023,11,19));
+        BP bpPat1 = new BP(130,70,LocalDate.of(2023,9,15),"ST");
+        BP bpPat2 = new BP(150,80,LocalDate.of(2023,11,20),"VST");
+
+
+        Patient pat1 = new Patient("Daphne Von Oram",62, imagePat1, mriPat1, bpPat1);
+        Patient pat2 = new Patient("Sebastian Compton",31, imagePat2, mriPat2, bpPat2);
+
+        Patients.add(pat1);
+        Patients.add(pat2);
+
+        List<String> patientLog = new ArrayList<String>();
+
+
+        for (Patient pat:Patients){
+            List<String> log = pat.getPatientLog();
+            System.out.println("Patient: "+ log.get(0) + ": MRI: " + log.get(1) + ", "+ log.get(2) + ": BP: " + log.get(3)+ ", "+log.get(4));
         }
+
+
+
+
+
     }
 }
