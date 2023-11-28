@@ -15,7 +15,7 @@ public class Patient {
 
     private List<String> patientLog;
 
-    // to add additional patient data,
+    // to add additional patient data, just add more parameters and adjust the jpanel size in patient panel
 
 
     public Patient(String name, int age, MRI mri, BP bp){
