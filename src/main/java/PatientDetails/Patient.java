@@ -1,5 +1,6 @@
 package PatientDetails;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +15,18 @@ public class Patient {
 
     private List<String> patientLog;
 
-    public Patient(String name, int age, URL imageUrl, MRI mri, BP bp){
+    // to add additional patient data,
+
+
+    public Patient(String name, int age, MRI mri, BP bp){
         this.name = name;
         this.age = age;
-        this.imageUrl = imageUrl;
+        this.imageUrl = null;
         this.mri = mri;
         this.bp = bp;
         this.patientLog = new ArrayList<String>();
 
+        // a log of all the patient details as strings to display onto the panel outputs
         patientLog.add(name);
         patientLog.add(Integer.toString(mri.getFieldStrength()));
         patientLog.add(mri.getScanDate().toString());
@@ -39,6 +44,16 @@ public class Patient {
 
     public URL getImageUrl() {
         return imageUrl;
+    }
+
+    public void setImageUrl(String Url) {
+        try {
+            this.imageUrl = new URL(Url);
+        }
+        catch (MalformedURLException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public MRI getMri() {

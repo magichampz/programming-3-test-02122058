@@ -26,22 +26,14 @@ public class PatientPanel extends JPanel {
         bpDetails.setText("<html> Blood Pressure<br>" + pat.getBp().getSys() + " over " + pat.getBp().getDia()+ "</html>");
 
 
-        this.setLayout(new GridLayout(1,5));
-
+        this.setLayout(new GridLayout(1,4));
 
         this.add(new PicturePanel(pat.getImageUrl()).label);
         this.add(details);
-//        this.add(new JLabel("text1"));
-        this.add(new PicturePanel(pat.getMri().getImageURL()).label);
+        this.add(new PicturePanel(pat.getMri().getImageUrl()).label);
         this.add(bpDetails);
-//        this.add(new PicturePanel(imageURL).label);
 
-//        this.add(new JLabel("text4"));
 
-//        this.add(viewPanel);
-        // maybe don't need a view panel and can just add
-        // the panels directly to this (this.setLayout and all)
     }
 
-//    public
 }

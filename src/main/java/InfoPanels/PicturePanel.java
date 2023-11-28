@@ -9,17 +9,9 @@ import java.net.MalformedURLException;
 public class PicturePanel {
 
     JLabel label = new JLabel();
-    private URL imageURL;
 
+    // panel to display pictures according to the url. the url exception is caught in other classes
     public PicturePanel(URL imageURL){
-        this.imageURL = imageURL;
-
-//        try {
-//            this.imageURL = imageURL;
-//        }
-//        catch (MalformedURLException e){
-//            System.out.println(e.getMessage());
-//        }
 
         ImageIcon thisImageIcon = new ImageIcon(imageURL);
         label.setIcon(thisImageIcon);
