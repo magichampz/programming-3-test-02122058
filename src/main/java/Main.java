@@ -38,19 +38,42 @@ public class Main {
         Patient pat2 = new Patient("Sebastian Compton",31, mriPat2, bpPat2);
         pat2.setImageUrl(imageUrlPat2);
 
+        // test adding another patient
+//        Patient pat3 = new Patient("Sebastian Compton",31, mriPat2, bpPat2);
+//        pat3.setImageUrl(imageUrlPat2); // set to some other patient url
 
+
+
+        // Additional Patients can be added here, the frame window size will adjust to show all
         Patients.add(pat1);
         Patients.add(pat2);
+//        Patients.add(pat3);
+
 
         JFrame frame = new JFrame("Medical Log");
         JPanel displayPanel = new JPanel();
 
 
         for (Patient pat:Patients){
-            PatientPanel patPanel = new PatientPanel(pat);
-            patPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+            try{
+                PatientPanel patPanel = new PatientPanel(pat);
+                patPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                displayPanel.add(patPanel);
 
-            displayPanel.add(patPanel);
+            }
+            catch(Exception e){
+                System.out.print("error with making the patient panel");
+                JLabel patPanel = new JLabel("error");
+                displayPanel.add(patPanel);
+
+
+            }
+
+
+
+//            patPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+//
+//            displayPanel.add(patPanel);
 
             List<String> log = pat.getPatientLog();
             System.out.println("\nPatient: "+ log.get(0) + ": MRI: " + log.get(1) + ", "+ log.get(2) + ": BP: " + log.get(3)+ ", "+log.get(4));
@@ -59,7 +82,6 @@ public class Main {
         // arbitrary height of 250 pixels for each patient entry added
         int height = Patients.size()*250;
 
-//        displayPanel.setPreferredSize(new Dimension(900,height));
         frame.setSize(1000,height);
         frame.setContentPane(displayPanel);
 //        frame.pack();
@@ -71,7 +93,6 @@ public class Main {
         });
 
 
-        // put everything in a for loop that checks for every patient
 
 
 
